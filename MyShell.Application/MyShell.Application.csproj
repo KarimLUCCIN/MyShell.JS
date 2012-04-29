@@ -46,6 +46,7 @@
     <Compile Include="ApplicationEndPoint.cs" />
     <Compile Include="ApplicationHost.cs" />
     <Compile Include="ExecutionResult.cs" />
+    <Compile Include="IShellDataWindow.cs" />
     <Compile Include="IShellImplementation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

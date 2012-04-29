@@ -8,7 +8,7 @@ using System.Collections.ObjectModel;
 
 namespace MyShell
 {
-    public class MyShellImplementation : IShellImplementation, INotifyPropertyChanged
+    public class MyShellImplementationModel : IShellImplementation, INotifyPropertyChanged
     {
         private ApplicationHost host;
 
@@ -17,7 +17,7 @@ namespace MyShell
             get { return host; }
         }
         
-        public MyShellImplementation()
+        public MyShellImplementationModel()
         {
             host = new ApplicationHost(this);
         }
@@ -55,6 +55,44 @@ namespace MyShell
         {
             if (RequestScrollToLastResultEventHandler != null)
                 RequestScrollToLastResultEventHandler(this, EventArgs.Empty);
+        }
+
+        public event EventHandler RequestCloseEventHandler;
+        public void Close()
+        {
+            if (RequestCloseEventHandler != null)
+                RequestCloseEventHandler(this, EventArgs.Empty);
+        }
+
+        Dictionary<string, IShellDataWindow> runningDataWindows = new Dictionary<string, IShellDataWindow>();
+        public IShellDataWindow GetDataWindow(string id, bool canCreate = true)
+        {
+            if (String.IsNullOrEmpty(id))
+                return null;
+            else
+            {
+                IShellDataWindow wnd;
+
+                if (!runningDataWindows.TryGetValue(id, out wnd))
+                {
+                    if (!canCreate)
+                        return null;
+                    else
+                    {
+                        var n_wnd = new ShellDataWindow(id);
+                        wnd = runningDataWindows[id] = n_wnd;
+
+                        n_wnd.Show();
+                        n_wnd.Title = String.Format("Data: {0}", id);
+                        n_wnd.Closed += delegate
+                        {
+                            runningDataWindows.Remove(id);
+                        };
+                    }
+                }
+
+                return wnd;
+            }
         }
 
         #endregion

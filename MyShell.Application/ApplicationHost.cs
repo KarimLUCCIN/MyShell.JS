@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Noesis.Javascript;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace MyShell.Application
 {
@@ -38,11 +39,27 @@ namespace MyShell.Application
 
             this.shellImpl = shellImpl;
 
-            endPoint = new ApplicationEndPoint();
+            endPoint = new ApplicationEndPoint(this);
 
             context = new JavascriptContext();
             context.SetParameter("app", endPoint);
             context.SetParameter("shell", shellImpl);
+
+            RegisterGlobalFunctions();
+        }
+
+        private void RegisterGlobalFunctions()
+        {
+            context.SetParameter("close", (Action)shellImpl.Close);
+
+            context.SetParameter("advert", (Func<string, string>)endPoint.advert);
+
+            context.SetParameter("clrload", (Func<string, Assembly>)endPoint.clrload);
+            context.SetParameter("clrtype", (Func<string, Type>)endPoint.clrtype);
+
+            context.SetParameter("valueof", (Func<object, string>)endPoint.valueof);
+
+            context.SetParameter("clear", (Action)delegate { shellImpl.Results.Clear(); });
         }
 
         #region IDisposable Members

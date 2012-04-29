@@ -1,7 +1,7 @@
 ﻿<Application x:Class="MyShell.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="MainWindow.xaml" xmlns:my="clr-namespace:MyShell.Converters">
+             StartupUri="MainWindow.xaml" xmlns:my="clr-namespace:MyShell.Converters" ShutdownMode="OnMainWindowClose">
     <Application.Resources>
     <my:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter" />
   </Application.Resources>

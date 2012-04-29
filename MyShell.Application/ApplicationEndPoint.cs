@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.Collections;
+using System.Dynamic;
 
 namespace MyShell.Application
 {
@@ -12,6 +13,41 @@ namespace MyShell.Application
     /// </summary>
     public class ApplicationEndPoint
     {
+        public ApplicationHost Host { get; private set; }
+
+        public ApplicationEndPoint(ApplicationHost host)
+        {
+            Host = host;
+        }
+
+        public string data(string id)
+        {
+            var wnd = Host.ShellImpl.GetDataWindow(id, false);
+
+            if (wnd == null)
+                return null;
+            else
+                return wnd.Data;
+        }
+
+        public string data(string id, string value)
+        {
+            var wnd = Host.ShellImpl.GetDataWindow(id, true);
+
+            if (wnd != null)
+                return wnd.Data = value;
+            else
+                return null;
+        }
+
+        public void closedata(string id)
+        {
+            var wnd = Host.ShellImpl.GetDataWindow(id, false);
+
+            if (wnd != null)
+                wnd.Close();
+        }
+
         public Assembly clrload(string assemblyName)
         {
             return Assembly.LoadWithPartialName(assemblyName);
@@ -20,6 +56,16 @@ namespace MyShell.Application
         public Type clrtype(string name)
         {
             return Type.GetType(name);
+        }
+
+        public object clrthiscall(object obj, string method, object[] args)
+        {
+            if (obj == null)
+                return null;
+            else
+            {
+                return obj.GetType().InvokeMember(method, BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod, null, obj, args);
+            }
         }
 
         public string valueof(object a)

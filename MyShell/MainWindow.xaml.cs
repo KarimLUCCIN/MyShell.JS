@@ -19,9 +19,9 @@ namespace MyShell
     /// </summary>
     public partial class MainWindow : Window
     {
-        private MyShellImplementation shell;
+        private MyShellImplementationModel shell;
 
-        public MyShellImplementation Shell
+        public MyShellImplementationModel Shell
         {
             get { return shell; }
             set { shell = value; }
@@ -30,7 +30,7 @@ namespace MyShell
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = shell = new MyShellImplementation();
+            DataContext = shell = new MyShellImplementationModel();
 
             RegisterEvents();
         }
@@ -48,6 +48,14 @@ namespace MyShell
                         if (lastIndex > 0)
                             resultsBox.ScrollIntoView(resultsBox.Items[lastIndex - 1]);
                     }
+                });
+            };
+
+            shell.RequestCloseEventHandler += delegate
+            {
+                Dispatcher.Invoke((Action)delegate
+                {
+                    Close();
                 });
             };
         }

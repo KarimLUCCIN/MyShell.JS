@@ -1,0 +1,24 @@
+﻿<Window x:Class="MyShell.ShellDataWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ShellDataWindow" Height="300" Width="300">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="AppStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <Border Style="{StaticResource shBorderStyle}">
+            <TextBox Text="{Binding Mode=TwoWay, Path=Data, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource shTextBoxStyle}" AcceptsReturn="True" AcceptsTab="True"/>
+        </Border>
+        
+        <Button Click="Button_Click" HorizontalAlignment="Right" Margin="4" Grid.Row="1" Width="100" Content="Close"/>
+    </Grid>
+</Window>
