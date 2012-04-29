@@ -59,7 +59,26 @@ namespace MyShell.Application
 
             context.SetParameter("valueof", (Func<object, string>)endPoint.valueof);
 
-            context.SetParameter("clear", (Action)delegate { shellImpl.Results.Clear(); });
+            context.SetParameter("clear", (Action)delegate
+            {
+                shellImpl.Results.Clear();
+                lastReturns.Clear();
+            });
+
+            context.SetParameter("prev", (Func<int, object>)delegate(int index)
+            {
+                if (lastReturns.Count < 1)
+                    return null;
+                else
+                {
+                    if (index < 0)
+                        return lastReturns.ToArray();
+                    else if (index >= lastReturns.Count)
+                        return null;
+                    else
+                        return lastReturns[lastReturns.Count - index - 1];
+                }
+            });
         }
 
         #region IDisposable Members
@@ -87,6 +106,9 @@ namespace MyShell.Application
 
         #endregion
 
+        int maxLastReturns = 50;
+        List<object> lastReturns = new List<object>();
+
         public ExecutionResult ExecuteScript(string script)
         {
             if (String.IsNullOrEmpty(script))
@@ -99,7 +121,10 @@ namespace MyShell.Application
 
                 try
                 {
-                    result.Result = context.Run(script);
+                    lastReturns.Add(result.Result = context.Run(script));
+
+                    while (lastReturns.Count > maxLastReturns)
+                        lastReturns.RemoveAt(0);
 
                     result.Success = true;
                 }

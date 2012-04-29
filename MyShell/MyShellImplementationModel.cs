@@ -84,6 +84,7 @@ namespace MyShell
 
                         n_wnd.Show();
                         n_wnd.Title = String.Format("Data: {0}", id);
+
                         n_wnd.Closed += delegate
                         {
                             runningDataWindows.Remove(id);

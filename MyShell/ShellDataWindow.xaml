@@ -16,7 +16,9 @@
         </Grid.RowDefinitions>
         
         <Border Style="{StaticResource shBorderStyle}">
-            <TextBox Text="{Binding Mode=TwoWay, Path=Data, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource shTextBoxStyle}" AcceptsReturn="True" AcceptsTab="True"/>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <TextBox Text="{Binding Mode=TwoWay, Path=Data, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource shTextBoxStyle}" AcceptsReturn="True" AcceptsTab="True"/>
+            </ScrollViewer>
         </Border>
         
         <Button Click="Button_Click" HorizontalAlignment="Right" Margin="4" Grid.Row="1" Width="100" Content="Close"/>

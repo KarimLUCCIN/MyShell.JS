@@ -46,7 +46,7 @@
             </ScrollViewer>
         </Border>
 
-        <GridSplitter Grid.Row="2"/>
+        <GridSplitter Grid.Row="2" HorizontalAlignment="Stretch" />
         
         <Grid Grid.Row="3">
             <Grid.ColumnDefinitions>

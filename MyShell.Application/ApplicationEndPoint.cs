@@ -74,10 +74,14 @@ namespace MyShell.Application
                 return "{null}";
             else if (a is string)
                 return (string)a;
+            else if (a is Array)
+            {
+                return "Array: " + String.Concat(from object item in ((Array)a) select String.Format("[{0}] ", valueof(item)));
+            }
             else if (a is IDictionary)
             {
                 var dic = (IDictionary)a;
-                return "Dictionary: " + String.Concat(from object key in dic.Keys select String.Format("[{0}:{1}]", key, valueof(dic[key])));
+                return "Dictionary: " + String.Concat(from object key in dic.Keys select String.Format("[{0}:{1}] ", key, valueof(dic[key])));
             }
             else
                 return a.ToString();
