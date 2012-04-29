@@ -5,6 +5,7 @@ using System.Text;
 using Noesis.Javascript;
 using System.Diagnostics;
 using System.Reflection;
+using MyShell.Application.Snips;
 
 namespace MyShell.Application
 {
@@ -32,6 +33,14 @@ namespace MyShell.Application
             set { shellImpl = value; }
         }
 
+        private SnipsManager snipsManager;
+
+        public SnipsManager SnipsManager
+        {
+            get { return snipsManager; }
+            set { snipsManager = value; }
+        }
+        
         public ApplicationHost(IShellImplementation shellImpl)
         {
             if (shellImpl == null)
@@ -46,24 +55,18 @@ namespace MyShell.Application
             context.SetParameter("shell", shellImpl);
 
             RegisterGlobalFunctions();
+
+            snipsManager = new SnipsManager(this);
+            snipsManager.Load();
+
+            Clear();
         }
 
         private void RegisterGlobalFunctions()
         {
             context.SetParameter("close", (Action)shellImpl.Close);
 
-            context.SetParameter("advert", (Func<string, string>)endPoint.advert);
-
-            context.SetParameter("clrload", (Func<string, Assembly>)endPoint.clrload);
-            context.SetParameter("clrtype", (Func<string, Type>)endPoint.clrtype);
-
-            context.SetParameter("valueof", (Func<object, string>)endPoint.valueof);
-
-            context.SetParameter("clear", (Action)delegate
-            {
-                shellImpl.Results.Clear();
-                lastReturns.Clear();
-            });
+            context.SetParameter("clear", (Action)Clear);
 
             context.SetParameter("prev", (Func<int, object>)delegate(int index)
             {
@@ -79,6 +82,12 @@ namespace MyShell.Application
                         return lastReturns[lastReturns.Count - index - 1];
                 }
             });
+        }
+
+        public void Clear()
+        {
+            shellImpl.Results.Clear();
+            lastReturns.Clear();
         }
 
         #region IDisposable Members
@@ -145,6 +154,11 @@ namespace MyShell.Application
 
                 return result;
             }
+        }
+
+        public void RegisterFunction(string name, Delegate action)
+        {
+            context.SetParameter(name, action);
         }
     }
 }

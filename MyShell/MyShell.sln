@@ -5,6 +5,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShell", "MyShell.csproj",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShell.Application", "..\MyShell.Application\MyShell.Application.csproj", "{E645F5F4-1ABB-44DE-921B-F69F3CABA549}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Snips", "Snips", "{AC55AFFC-3154-4466-8944-083D504EDC25}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{F3BEC270-A535-4DED-8C1B-6C87480DF251}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShell.Basics.Snip", "..\Snips\MyShell.Basics.Snip\MyShell.Basics.Snip.csproj", "{C7DDC9BE-B075-4CC6-B103-BD234B47C718}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShell.Apps.Snip", "..\Snips\MyShell.Apps.Snip\MyShell.Apps.Snip.csproj", "{B8750896-4DFF-45E6-8EA3-E598BDD2E891}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,8 +43,34 @@ Global
 		{E645F5F4-1ABB-44DE-921B-F69F3CABA549}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E645F5F4-1ABB-44DE-921B-F69F3CABA549}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E645F5F4-1ABB-44DE-921B-F69F3CABA549}.Release|x86.ActiveCfg = Release|Any CPU
+		{C7DDC9BE-B075-4CC6-B103-BD234B47C718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7DDC9BE-B075-4CC6-B103-BD234B47C718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7DDC9BE-B075-4CC6-B103-BD234B47C718}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C7DDC9BE-B075-4CC6-B103-BD234B47C718}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C7DDC9BE-B075-4CC6-B103-BD234B47C718}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C7DDC9BE-B075-4CC6-B103-BD234B47C718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7DDC9BE-B075-4CC6-B103-BD234B47C718}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7DDC9BE-B075-4CC6-B103-BD234B47C718}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C7DDC9BE-B075-4CC6-B103-BD234B47C718}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C7DDC9BE-B075-4CC6-B103-BD234B47C718}.Release|x86.ActiveCfg = Release|Any CPU
+		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E645F5F4-1ABB-44DE-921B-F69F3CABA549} = {F3BEC270-A535-4DED-8C1B-6C87480DF251}
+		{64B685D0-38BA-436A-8D4A-EB9DD9DFD06E} = {F3BEC270-A535-4DED-8C1B-6C87480DF251}
+		{C7DDC9BE-B075-4CC6-B103-BD234B47C718} = {AC55AFFC-3154-4466-8944-083D504EDC25}
+		{B8750896-4DFF-45E6-8EA3-E598BDD2E891} = {AC55AFFC-3154-4466-8944-083D504EDC25}
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,5 @@
 
 /GitHere.bat
-/MyShell/bin
-/MyShell/obj
-/MyShell.Application/bin
-/MyShell.Application/obj
+bin/
+obj/
+Bin/

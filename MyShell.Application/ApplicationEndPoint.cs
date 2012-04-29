@@ -58,13 +58,23 @@ namespace MyShell.Application
             return Type.GetType(name);
         }
 
-        public object clrthiscall(object obj, string method, object[] args)
+        public object clrcall(int type, object obj, string method, object[] args)
         {
             if (obj == null)
                 return null;
             else
             {
-                return obj.GetType().InvokeMember(method, BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod, null, obj, args);
+                if (type == 0)
+                {
+                    /* this call */
+                    return obj.GetType().InvokeMember(method, BindingFlags.Public | BindingFlags.Instance | BindingFlags.InvokeMethod, null, obj, args);
+                }
+                else
+                {
+                    /* static call */
+                    var myType = (Type)obj;
+                    return myType.InvokeMember(method, BindingFlags.Public | BindingFlags.InvokeMethod | BindingFlags.Static, null, null, args);
+                }
             }
         }
 

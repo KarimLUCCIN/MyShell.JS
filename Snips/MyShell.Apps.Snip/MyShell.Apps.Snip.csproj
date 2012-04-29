@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E645F5F4-1ABB-44DE-921B-F69F3CABA549}</ProjectGuid>
+    <ProjectGuid>{B8750896-4DFF-45E6-8EA3-E598BDD2E891}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MyShell.Application</RootNamespace>
-    <AssemblyName>MyShell.Application</AssemblyName>
+    <RootNamespace>MyShell.Apps.Snip</RootNamespace>
+    <AssemblyName>MyShell.Apps.Snip</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\Bin\Snips\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,15 +25,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\..\Bin\Snips\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Noesis.Javascript">
-      <HintPath>..\Lib\Noesis.Javascript.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,16 +40,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationEndPoint.cs" />
-    <Compile Include="ApplicationHost.cs" />
-    <Compile Include="ExecutionResult.cs" />
-    <Compile Include="IShellDataWindow.cs" />
-    <Compile Include="IShellImplementation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Snips\CLRSnip.cs" />
-    <Compile Include="Snips\JavaScriptSnip.cs" />
-    <Compile Include="Snips\Snip.cs" />
-    <Compile Include="Snips\SnipsManager.cs" />
+    <Compile Include="Run.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CommonApps.snip.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyShell.Application\MyShell.Application.csproj">
+      <Project>{E645F5F4-1ABB-44DE-921B-F69F3CABA549}</Project>
+      <Name>MyShell.Application</Name>
+      <Private>False</Private>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
