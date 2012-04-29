@@ -41,30 +41,32 @@
         </Grid.RowDefinitions>
 
         <Border Grid.Row="1" Style="{StaticResource shBorderStyle}">
-            <ListBox x:Name="resultsBox" ItemContainerStyle="{StaticResource shListBoxItemStyle}" Style="{StaticResource shListBoxStyle}" ItemsSource="{Binding Results}" HorizontalContentAlignment="Stretch" AlternationCount="2">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            
-                            <!-- le script -->
-                            <TextBox Style="{StaticResource shTextBoxStyle}" IsReadOnly="True" Text="{Binding Source, Mode=OneWay}" AcceptsReturn="True"/>
-                            
-                            <!-- les résultats -->
-                            <Grid Grid.Row="1" Margin="10,5,0,0">
-                                <Rectangle Height="1" Fill="Black" VerticalAlignment="Top" HorizontalAlignment="Stretch" Opacity="0.45"/>
+            <ScrollViewer>
+                <ListBox x:Name="resultsBox" ItemContainerStyle="{StaticResource shListBoxItemStyle}" Style="{StaticResource shListBoxStyle}" ItemsSource="{Binding Results}" HorizontalContentAlignment="Stretch" AlternationCount="2">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
 
-                                <TextBox Visibility="{Binding Success, Converter={StaticResource BooleanVisibilityConverter}, ConverterParameter=Invert}" Style="{StaticResource shTextBoxStyle}" Margin="10,5,0,0" IsReadOnly="True" Text="{Binding Error, Mode=OneWay}" AcceptsReturn="True" Foreground="Red" />
+                                <!-- le script -->
+                                <TextBox Style="{StaticResource shTextBoxStyle}" IsReadOnly="True" Text="{Binding Source, Mode=OneWay}" AcceptsReturn="True"/>
 
-                                <TextBox Visibility="{Binding Success, Converter={StaticResource BooleanVisibilityConverter}}" Style="{StaticResource shTextBoxStyle}" Margin="10,5,0,0" IsReadOnly="True" Text="{Binding StringResult, Mode=OneWay}" AcceptsReturn="True"/>
+                                <!-- les résultats -->
+                                <Grid Grid.Row="1" Margin="10,5,0,0">
+                                    <Rectangle Height="1" Fill="Black" VerticalAlignment="Top" HorizontalAlignment="Stretch" Opacity="0.45"/>
+
+                                    <TextBox Visibility="{Binding Success, Converter={StaticResource BooleanVisibilityConverter}, ConverterParameter=Invert}" Style="{StaticResource shTextBoxStyle}" Margin="10,5,0,0" IsReadOnly="True" Text="{Binding Error, Mode=OneWay}" AcceptsReturn="True" Foreground="Red" />
+
+                                    <TextBox Visibility="{Binding Success, Converter={StaticResource BooleanVisibilityConverter}}" Style="{StaticResource shTextBoxStyle}" Margin="10,5,0,0" IsReadOnly="True" Text="{Binding StringResult, Mode=OneWay}" AcceptsReturn="True"/>
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
         </Border>
 
         <GridSplitter Grid.Row="2"/>
