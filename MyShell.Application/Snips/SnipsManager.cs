@@ -96,6 +96,9 @@ namespace MyShell.Application.Snips
 
         private void LoadClrSnip(string assemblyPath, ref string log, string executeAfter = null)
         {
+            var dir = Path.GetDirectoryName(assemblyPath);
+            AppDomain.CurrentDomain.AppendPrivatePath(dir);
+
             var asm = Assembly.LoadFile(assemblyPath);
             var types = asm.GetTypes();
 

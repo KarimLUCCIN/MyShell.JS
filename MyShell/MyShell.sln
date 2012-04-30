@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShell.Basics.Snip", "..\S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShell.Apps.Snip", "..\Snips\MyShell.Apps.Snip\MyShell.Apps.Snip.csproj", "{B8750896-4DFF-45E6-8EA3-E598BDD2E891}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyShell.Parsers.Snip", "..\Snips\MyShell.Parsers.Snip\MyShell.Parsers.Snip.csproj", "{5A8A2E44-9191-4E13-A7F5-1B68E6538903}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,16 @@ Global
 		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B8750896-4DFF-45E6-8EA3-E598BDD2E891}.Release|x86.ActiveCfg = Release|Any CPU
+		{5A8A2E44-9191-4E13-A7F5-1B68E6538903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A8A2E44-9191-4E13-A7F5-1B68E6538903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A8A2E44-9191-4E13-A7F5-1B68E6538903}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{5A8A2E44-9191-4E13-A7F5-1B68E6538903}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{5A8A2E44-9191-4E13-A7F5-1B68E6538903}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5A8A2E44-9191-4E13-A7F5-1B68E6538903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A8A2E44-9191-4E13-A7F5-1B68E6538903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A8A2E44-9191-4E13-A7F5-1B68E6538903}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{5A8A2E44-9191-4E13-A7F5-1B68E6538903}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{5A8A2E44-9191-4E13-A7F5-1B68E6538903}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,5 +84,6 @@ Global
 		{64B685D0-38BA-436A-8D4A-EB9DD9DFD06E} = {F3BEC270-A535-4DED-8C1B-6C87480DF251}
 		{C7DDC9BE-B075-4CC6-B103-BD234B47C718} = {AC55AFFC-3154-4466-8944-083D504EDC25}
 		{B8750896-4DFF-45E6-8EA3-E598BDD2E891} = {AC55AFFC-3154-4466-8944-083D504EDC25}
+		{5A8A2E44-9191-4E13-A7F5-1B68E6538903} = {AC55AFFC-3154-4466-8944-083D504EDC25}
 	EndGlobalSection
 EndGlobal
